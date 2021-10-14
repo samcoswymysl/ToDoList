@@ -27,9 +27,9 @@ app.post('/todo', async (req, res) => {
 app.get('/todo', async (req, res) => {
   try {
     const data = await readFile('data/todo.json', 'utf8');
-    console.log(data)
+    console.log(data);
     if (data === '' || data === '[]') {
-      res.send({info: 'Any tasks on the list'});
+      res.send({ info: 'Any tasks on the list' });
     } else {
       res.send(data);
     }
@@ -37,7 +37,7 @@ app.get('/todo', async (req, res) => {
     if (err.code === 'ENOENT') {
       console.log(err);
       console.log(res);
-      res.send({info: 'Any tasks on the list'});
+      res.send({ info: 'Any tasks on the list' });
     }
   }
 });

@@ -81,8 +81,10 @@ const createToolsPanel = (Li) => {
 const creatTodolist = (toDoListArrayFromServer) => {
   const toDoArray = toDoListArrayFromServer;
   ulList.innerHTML = '';
+  taskListAr.length = 0;
 
   toDoArray.forEach((element) => {
+    taskListAr.push(element);
     const newLi = document.createElement('li');
     newLi.innerText = element.name;
     if (element.active === true) {
@@ -106,6 +108,7 @@ const refactorTaskList = () => {
 const createTodoElement = (nameTask) => {
   const newTask = new CreateTask(nameTask, false);
   taskListAr.push(newTask);
+  sentMessageToBackEnd();
 };
 
 const addNewTask = () => {
@@ -117,7 +120,6 @@ const addNewTask = () => {
   clearInputText();
   clearInfo();
   createTodoElement(taskName);
-  sentMessageToBackEnd();
 };
 
 const deleteTask = (ev) => {
