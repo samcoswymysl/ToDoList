@@ -1,0 +1,21 @@
+{
+  "name": "zadaniekonkurs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.15.8",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb": "^18.2.1"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

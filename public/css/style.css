@@ -1,0 +1,28 @@
+body{
+    background-color: lightgrey;
+}
+
+.hideEdit{
+ display: none;
+}
+
+
+.editTodo{
+
+}
+
+.edit{
+    width: 100px;
+}
+
+.check{
+    width: 100px;
+}
+
+.editTaskPopup{
+
+}
+
+.completed {
+    color: gold;
+}
