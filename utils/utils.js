@@ -3,13 +3,14 @@ const { readFile, writeFile } = require('fs').promises;
 const readTaskList = async () => {
   try {
     const data = await readFile('data/todo.json', 'utf8');
-    const newData = data ? await JSON.parse(data) : [];
-    return newData;
+    const dataParsToArr = data ? await JSON.parse(data) : [];
+    return dataParsToArr;
   } catch (er) {
-    console.log(er);
     if (er.code === 'ENOENT') {
       return [];
     }
+
+    return { err: 'Unknown reading data error' };
   }
 };
 
@@ -34,6 +35,8 @@ const addNewTask = async (task) => {
   const newTask = task;
   const taskList = await readTaskList();
 
+  if (taskList.err) return taskList;
+
   newTask.active = false;
   newTask.taskId = taskList.length;
   taskList.push(newTask);
@@ -43,6 +46,8 @@ const addNewTask = async (task) => {
 
 const editToDoList = async (idTask, action) => {
   const toDoList = await readTaskList();
+
+  if (toDoList.err) return toDoList;
 
   if (action === 'delete') {
     toDoList.splice(idTask, 1);
@@ -59,6 +64,9 @@ const editToDoList = async (idTask, action) => {
 
 const saveEditTask = async (taskId, taskValue) => {
   const toDoList = await readTaskList();
+
+  if (toDoList.err) return toDoList;
+
   toDoList[taskId].name = taskValue;
   await writeTaskList(toDoList);
   return toDoList;

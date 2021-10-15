@@ -1,35 +1,39 @@
 const express = require('express');
-const { readFile, writeFile } = require('fs').promises;
 const {
-  addNewTask, readTaskList, editToDoList, saveEditTask,
+  addNewTask,
+  readTaskList,
+  editToDoList,
+  saveEditTask,
+
 } = require('../utils/utils');
 
 const todoRouter = express.Router();
 
-todoRouter.post('/new', async (req, res) => {
-  res.json(await addNewTask(req.body));
-});
+todoRouter
+  .post('/new', async (req, res) => {
 
-todoRouter.post('/check&delete', async (req, res) => {
-  const { taskId, action } = req.body;
-  const data = await editToDoList(taskId, action);
+    res.json(await addNewTask(req.body));
+  })
 
-  res.json(data);
-});
+  .post('/check&delete', async (req, res) => {
+    const { taskId, action } = req.body;
+    const data = await editToDoList(taskId, action);
 
-todoRouter.post('/edittask', async (req, res) => {
-  const { editTaskId, newValueTask } = req.body;
+    res.json(data);
+  })
 
-  const data = await saveEditTask(editTaskId, newValueTask);
+  .post('/edittask', async (req, res) => {
+    const { editTaskId, newValueTask } = req.body;
+    const data = await saveEditTask(editTaskId, newValueTask);
 
-  res.json(data);
-});
+    res.json(data);
+  })
 
-todoRouter.get('/new', async (req, res) => {
-  const data = await readTaskList();
+  .get('/new', async (req, res) => {
+    const data = await readTaskList();
 
-  data.length ? res.json(data) : res.json({ info: 'Any task on your ToDo List' });
-});
+    res.json(data.length ? data : { info: 'Any task on your ToDo List' });
+  });
 
 module.exports = {
   todoRouter,

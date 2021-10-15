@@ -6,6 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDo list by Bunnesr</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Akronim&family=Italianno&display=swap" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/46f72b83cb.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
 
@@ -13,10 +17,22 @@
 </head>
 <body>
 
-<header><h1>ToDo List by Bunners</h1></header>
+
+<header><h3>ToDo List by Bunners</h3></header>
 
 <main>
-<div class="container">
+<div class="addTodoDiv">
+    <p class="showInfo"></p>
+    <div class="addNewTodo"></div>
+    <input type="text" class="todoInput" placeholder="Write your ToDo">
+    <div><button class="addBtn"><i class="fas fa-save"></i></i></button></div>
+
+
+</div>
+
+
+    <div class="container">
+
 
 
     <div class="todoList"></div>
@@ -24,24 +40,20 @@
     <ul>
     </ul>
 
-    <div class="addNewTodo"></div>
-    <input type="text" class="todoInput" placeholder="Write your ToDo">
-    <button class="addBtn"><i class="fas fa-save"></i></i></button>
-    <p class="showInfo"></p>
 
-    <div class="editTodo hideEdit">
-       <h2>Edit your Todo</h2>
+
+
+
+</div>
+</main>
+
+<div class="editTodo hideEdit">
+    <h2>Edit your Todo</h2>
     <input type="text" class="editTaskInput">
     <button class="saveEditBtn"><i class="fas fa-save"></i></button>
 
-    </div>
-
-</main>
-
-
-<footer></footer>
-
 </div>
+
 <script src="js/front.js"></script>
 
 

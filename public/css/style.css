@@ -1,28 +1,148 @@
+/* Background pattern from Toptal Subtle Patterns */
+
 body{
-    background-color: lightgrey;
+    font-family: 'Akronim', cursive;
+    background-image: url("img/backgroundBody.png") ;
+    background-attachment: fixed
+
+}
+
+li{
+    font-size: 30px;
+    list-style: none;
+    background-image: url("img/taskBacgrund.png");
+    margin: 15px;
+    padding: 5px;
+    border-radius: 15px;
+    overflow: auto;
+
+}
+li::-webkit-scrollbar {
+    display: none;
+}
+
+button{
+    filter: brightness(90%);
+    background-image: url("img/btnBackgrund.png");
+    margin-left: 20px;
+    width: 100px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+button:hover{
+    filter: brightness(100%);
+    font-size:19px ;
+
+
+}
+
+
+
+.container{
+
+    overflow: auto;
+    height: 450px;
+    border-radius: 30px;
+    background-image: url("img/corkBoard.png");
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65vw;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 40px;
+
+
+
+}
+
+.container::-webkit-scrollbar {
+    display: none;
+}
+
+.addTodoDiv{
+    border-radius: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65vw;
+    padding: 20px;
+
+}
+
+.addBtn{
+    margin-top: 5px;
+    width: 300px;
+
+}
+
+
+.loading
+{
+    margin-top: 60px;
+    height: 200px;
+    width: 200px;
+    border-radius: 20px;
+    opacity: 30%;
+}
+
+input{
+
+    font-family: 'Akronim', cursive;
+    font-size: 40px;
+    background-image: url("img/inputBackgrund.png");
+    margin-top: 20px;
+    width: 80%;
+    height: 45px;
+    border-radius: 5px;
+    padding: 5px;
+
+
 }
 
 .hideEdit{
- display: none;
+display: none;
 }
+
+
 
 
 .editTodo{
 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transition: transform 300ms;
+    transform: translate(-50%, -50%) scale(1, 1);
+
+
+    z-index: 3;
+    align-items: center;
+    height: 250px;
+    border-radius: 30px;
+    background-image: url("img/editBackgrund.png");
+    opacity: 85%;
+    text-align: center;
+    width: 65vw;
+    padding: 20px;
+    border: solid 5px black;
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0,0.75);
+
+
+
+
 }
 
-.edit{
-    width: 100px;
+.editTaskInput{
+    opacity: 100%;
 }
 
-.check{
-    width: 100px;
-}
-
-.editTaskPopup{
-
-}
 
 .completed {
-    color: gold;
+    text-decoration: line-through darkgray ;
+    color: darkgray;
 }
+
