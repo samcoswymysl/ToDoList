@@ -4,8 +4,8 @@
     "requireConfigFile": false
   },
   "env": {
-    "node" : true,
-    "browser" : true
+    "node": true,
+    "browser": true
   },
   "parser": "@babel/eslint-parser",
   "extends": "airbnb",

@@ -65,64 +65,59 @@ const editTask = {
     editPopup.classList.toggle('hideEdit');
     editTaskInput.value = editTask.editTaskLi.textContent;
   },
-  saveEdit() {
+  async saveEdit() {
     showInfoLoading();
     const newValueTask = editTaskInput.value;
-    fetch('http://localhost:3000/todo/edittask', {
+    const data = await fetch('http://localhost:3000/todo/edittask', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ editTaskId: editTask.editTaskId, newValueTask }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        creatTodolist(res);
-      });
+      body: JSON.stringify({editTaskId: editTask.editTaskId, newValueTask}),
+    });
+
+    const res = await data.json();
+    creatTodolist(res);
 
     editPopup.classList.toggle('hideEdit');
   },
 };
 
-const sendNewTask = (name) => {
+const sendNewTask = async (name) => {
   showInfoLoading();
-  fetch('http://localhost:3000/todo/new', {
+  const data = await fetch('http://localhost:3000/todo', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ name }),
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      creatTodolist(res);
-    });
+    body: JSON.stringify({name}),
+  });
+  const res = await data.json();
+  creatTodolist(res);
 };
 
-const deleteAndChangeStatusTodo = (taskId, action) => {
+const deleteAndChangeStatusTodo = async (taskId, action) => {
   showInfoLoading();
-  fetch('http://localhost:3000/todo/check&delete', {
+  const data = await fetch('http://localhost:3000/todo/check&delete', {
     method: 'post',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ taskId, action }),
-  })
-    .then((res) => res.json())
-    .then((res) => creatTodolist(res));
+    body: JSON.stringify({taskId, action}),
+  });
+  const res = await data.json();
+  creatTodolist(res);
 };
 
-const downlandTaskFormServer = () => {
+const downlandTaskFormServer = async () => {
   showInfoLoading();
-  fetch('http://localhost:3000/todo/new')
-    .then((res) => res.json())
-    .then((res) => {
-      ulList.innerHTML = '';
-      res.info ? toDoInput.setAttribute('placeholder', `${res.info}`) : creatTodolist(res);
-    });
+  const data = await fetch('http://localhost:3000/todo');
+  const res = await data.json();
+  ulList.innerHTML = '';
+  res.info ? toDoInput.setAttribute('placeholder', `${res.info}`) : creatTodolist(res);
 };
 
-const addNewTask = () => {
+const addNewTask = async () => {
   const taskName = toDoInput.value;
   if (taskName === '') {
     toDoInput.setAttribute('placeholder', 'Enter the content of the task');
@@ -130,26 +125,26 @@ const addNewTask = () => {
   }
   toDoInput.value = '';
   toDoInput.setAttribute('placeholder', 'Write your ToDo');
-  sendNewTask(taskName);
+  await sendNewTask(taskName);
 };
 
-const deleteTask = (ev) => {
+const deleteTask = async (ev) => {
   const liToRemove = ev.target.closest('li').dataset.id;
-  deleteAndChangeStatusTodo(liToRemove, 'delete');
+  await deleteAndChangeStatusTodo(liToRemove, 'delete');
 };
 
-const statusTaskEdit = (ev) => {
+const statusTaskEdit = async (ev) => {
   const statusChangeLi = ev.target.closest('li').dataset.id;
-  deleteAndChangeStatusTodo(statusChangeLi, 'changeStatus');
+  await deleteAndChangeStatusTodo(statusChangeLi, 'changeStatus');
 };
 
-const checkClick = (e) => {
+const checkClick = async (e) => {
   if (e.target.matches('.check')) {
-    statusTaskEdit(e);
+    await statusTaskEdit(e);
   } else if (e.target.matches('.edit')) {
     editTask.showPopUp(e);
   } else if (e.target.matches('.delete')) {
-    deleteTask(e);
+    await deleteTask(e);
   }
 };
 
@@ -158,14 +153,14 @@ ulList.addEventListener('click', checkClick);
 saveEditBtn.addEventListener('click', editTask.saveEdit);
 window.addEventListener('DOMContentLoaded', downlandTaskFormServer);
 
-editTaskInput.addEventListener('keyup', (e) => {
+editTaskInput.addEventListener('keyup', async (e) => {
   if (e.key === 'Enter') {
-    editTask.saveEdit();
+    await editTask.saveEdit();
   }
 });
 
-toDoInput.addEventListener('keyup', (e) => {
+toDoInput.addEventListener('keyup', async (e) => {
   if (e.key === 'Enter') {
-    addNewTask();
+    await addNewTask();
   }
 });

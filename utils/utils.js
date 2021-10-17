@@ -1,4 +1,4 @@
-const { readFile, writeFile } = require('fs').promises;
+const {readFile, writeFile} = require('fs').promises;
 
 const readTaskList = async () => {
   try {
@@ -10,7 +10,7 @@ const readTaskList = async () => {
       return [];
     }
 
-    return { err: 'Unknown reading data error' };
+    return {err: 'Unknown reading data error'};
   }
 };
 
@@ -52,10 +52,10 @@ const editToDoList = async (idTask, action) => {
   if (action === 'delete') {
     toDoList.splice(idTask, 1);
     const correctList = refactoringIdTask(toDoList);
-    console.log(correctList);
     await writeTaskList(correctList);
     return correctList;
-  } if (action === 'changeStatus') {
+  }
+  if (action === 'changeStatus') {
     toDoList[idTask].active = !toDoList[idTask].active;
     await writeTaskList(toDoList);
     return toDoList;

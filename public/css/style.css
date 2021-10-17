@@ -1,13 +1,13 @@
 /* Background pattern from Toptal Subtle Patterns */
 
-body{
+body {
     font-family: 'Akronim', cursive;
-    background-image: url("img/backgroundBody.png") ;
+    background-image: url("img/backgroundBody.png");
     background-attachment: fixed
 
 }
 
-li{
+li {
     font-size: 30px;
     list-style: none;
     background-image: url("img/taskBacgrund.png");
@@ -17,12 +17,13 @@ li{
     overflow: auto;
 
 }
+
 li::-webkit-scrollbar {
     display: none;
 }
 
-button{
-    filter: brightness(90%);
+button {
+    filter: brightness(80%);
     background-image: url("img/btnBackgrund.png");
     margin-left: 20px;
     width: 100px;
@@ -30,18 +31,18 @@ button{
     padding: 5px;
     border-radius: 5px;
     font-size: 18px;
+    transition: filter .5s;
 }
 
-button:hover{
+button:hover {
     filter: brightness(100%);
-    font-size:19px ;
+    transition: filter .5s;
 
 
 }
 
 
-
-.container{
+.container {
 
     overflow: auto;
     height: 450px;
@@ -56,14 +57,13 @@ button:hover{
     padding-right: 40px;
 
 
-
 }
 
 .container::-webkit-scrollbar {
     display: none;
 }
 
-.addTodoDiv{
+.addTodoDiv {
     border-radius: 30px;
     text-align: center;
     margin-left: auto;
@@ -73,15 +73,14 @@ button:hover{
 
 }
 
-.addBtn{
+.addBtn {
     margin-top: 5px;
     width: 300px;
 
 }
 
 
-.loading
-{
+.loading {
     margin-top: 60px;
     height: 200px;
     width: 200px;
@@ -89,7 +88,7 @@ button:hover{
     opacity: 30%;
 }
 
-input{
+input {
 
     font-family: 'Akronim', cursive;
     font-size: 40px;
@@ -103,14 +102,12 @@ input{
 
 }
 
-.hideEdit{
-display: none;
+.hideEdit {
+    display: none;
 }
 
 
-
-
-.editTodo{
+.editTodo {
 
     position: fixed;
     top: 50%;
@@ -129,20 +126,18 @@ display: none;
     width: 65vw;
     padding: 20px;
     border: solid 5px black;
-    box-shadow: 0 20px 20px 0 rgba(0, 0, 0,0.75);
-
-
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.75);
 
 
 }
 
-.editTaskInput{
+.editTaskInput {
     opacity: 100%;
 }
 
 
 .completed {
-    text-decoration: line-through darkgray ;
+    text-decoration: line-through darkgray;
     color: darkgray;
 }
 
